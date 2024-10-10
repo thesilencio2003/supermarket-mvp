@@ -19,13 +19,13 @@ namespace Supermarket_mvp.Views
         public string PayModeId
         {
             get { return TxtPayModeId.Text; }
-            set {  TxtPayModeId.Text = value;}
+            set { TxtPayModeId.Text = value; }
         }
 
         public string PayModeName
         {
             get { return TxtPayModeName.Text; }
-            set { TxtPayModeName.Text = value;}
+            set { TxtPayModeName.Text = value; }
         }
 
         public string PayModeObservation
@@ -64,6 +64,7 @@ namespace Supermarket_mvp.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPagePayModeDetail);
+            BtnClose.Click += delegate { this.Close(); };
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -97,15 +98,18 @@ namespace Supermarket_mvp.Views
 
         public void SetPayModeListBildingSource(BindingSource payModeList)
         {
-           DgPayMode.DataSource = payModeList;
+            DgPayMode.DataSource = payModeList;
         }
 
         private static PayModeView instance;
-        public static PayModeView GetInstance()
+        public static PayModeView GetInstance(Form parentCotainer)
         {
             if (instance == null || instance.IsDisposed)
             {
                 instance = new PayModeView();
+                instance.MdiParent = parentCotainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
             }
             else
             {
@@ -118,6 +122,9 @@ namespace Supermarket_mvp.Views
             return instance;
         }
 
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

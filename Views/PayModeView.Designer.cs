@@ -120,6 +120,7 @@
             // 
             // BtnClose
             // 
+            BtnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnClose.BackColor = Color.FromArgb(224, 224, 224);
             BtnClose.Image = Properties.Resources.cerrar;
             BtnClose.Location = new Point(748, 305);
@@ -130,6 +131,7 @@
             // 
             // BtnDelete
             // 
+            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnDelete.BackColor = Color.FromArgb(224, 224, 224);
             BtnDelete.Image = Properties.Resources.delete;
             BtnDelete.Location = new Point(748, 231);
@@ -137,9 +139,11 @@
             BtnDelete.Size = new Size(223, 68);
             BtnDelete.TabIndex = 6;
             BtnDelete.UseVisualStyleBackColor = false;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnEdit
             // 
+            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnEdit.BackColor = Color.FromArgb(224, 224, 224);
             BtnEdit.Image = Properties.Resources.edit;
             BtnEdit.Location = new Point(748, 154);
@@ -151,6 +155,7 @@
             // 
             // BtnNew
             // 
+            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnNew.BackColor = Color.FromArgb(224, 224, 224);
             BtnNew.ForeColor = SystemColors.ControlText;
             BtnNew.Image = Properties.Resources._new;
@@ -164,6 +169,7 @@
             // 
             DgPayMode.AllowUserToAddRows = false;
             DgPayMode.AllowUserToDeleteRows = false;
+            DgPayMode.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DgPayMode.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgPayMode.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgPayMode.Location = new Point(23, 77);
@@ -174,9 +180,10 @@
             // 
             // BtnSearch
             // 
+            BtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnSearch.BackColor = Color.FromArgb(224, 224, 224);
             BtnSearch.Image = Properties.Resources.search_small;
-            BtnSearch.Location = new Point(653, 26);
+            BtnSearch.Location = new Point(655, 26);
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(71, 45);
             BtnSearch.TabIndex = 2;
@@ -184,6 +191,7 @@
             // 
             // TxtSearch
             // 
+            TxtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TxtSearch.Location = new Point(23, 38);
             TxtSearch.Name = "TxtSearch";
             TxtSearch.PlaceholderText = "Data to search";
