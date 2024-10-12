@@ -17,4 +17,4 @@ Categories_Name nvarchar (50) not null,
 Categories_Description nvarchar (50) not null,
 )
 go
-insert into Product values('Cleaning','This cleaning personal')
+insert into Categories values('Cleaning','This cleaning personal')

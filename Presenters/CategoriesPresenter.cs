@@ -48,7 +48,37 @@ namespace Supermarket_mvp.Presenters
 
         private void SavePayMode(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var categories = new CategoriesModel();
+            categories.Id = Convert.ToInt32(view.CategoriesId);
+            categories.Name = view.CategoriesName;
+            categories.Description = view.CategoriesDescription;
+
+            try
+            {
+
+
+                new Common.ModelDataValidation().Validate(categories);
+                if (view.IsEdit)
+                {
+                    repository.Edit(categories);
+                    view.Message = "Categories edited successfuly";
+                }
+                else
+                {
+                    repository.Add(categories);
+                    view.Message = "Categories added successfuly";
+                }
+                view.IsSuccessful = true;
+                LoadAllPayModeList();
+                CleanViewFields();
+
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
+
         }
 
         private void CleanViewFields()
@@ -59,17 +89,38 @@ namespace Supermarket_mvp.Presenters
         }
         private void DeleteSelectedPayMode(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categories = (CategoriesModel)categoriesBindingSource.Current;
+
+                repository.Delete(categories.Id);
+                view.IsSuccessful = true;
+                view.Message = "Categories deleted successfuly";
+                LoadAllPayModeList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "An error ocurred, could not delete Categories";
+            }
         }
 
         private void LoadSelectPayModeToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+            var payMode = (CategoriesModel)categoriesBindingSource.Current;
+
+            view.CategoriesId = payMode.Id.ToString();
+            view.CategoriesName = payMode.Name;
+            view.CategoriesDescription = payMode.Description;
+
+            view.IsEdit = true;
         }
 
         private void AddNewPayMode(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+            view.IsEdit = false;
         }
 
         private void SearchPayMode(object? sender, EventArgs e)
