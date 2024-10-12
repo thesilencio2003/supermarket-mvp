@@ -20,6 +20,7 @@ namespace Supermarket_mvp.Views
         public CategoriesView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
         }
         public string CategoriesId
         {
@@ -73,8 +74,22 @@ namespace Supermarket_mvp.Views
         public void SetCategoriesListBildingSource(BindingSource categoriesList)
         {
             DgCategories.DataSource = categoriesList;
+            tabControl1.TabPages.Remove(tabPageCategoriesDetail);
+            BtnClose.Click += delegate { this.Close(); };
         }
 
+        private void AssociateAndRaiseViewEvents()
+        {
+            BtnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            TxtSearch.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
 
+
+        }
     }
 }
