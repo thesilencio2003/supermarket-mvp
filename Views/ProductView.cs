@@ -19,6 +19,8 @@ namespace Supermarket_mvp.Views
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
+            tabControl1.TabPages.Remove(tabPageProductDetail);
+            BtnClose.Click += delegate { this.Close(); };
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -32,7 +34,59 @@ namespace Supermarket_mvp.Views
                 }
             };
 
-            
+            BtnNew.Click += delegate {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageProductModeList);
+                tabControl1.TabPages.Add(tabPageProductDetail);
+                tabPageProductDetail.Text = "Add New Product";
+            };
+
+
+
+            BtnEdit.Click += delegate {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageProductModeList);
+                tabControl1.TabPages.Add(tabPageProductDetail);
+                tabPageProductDetail.Text = "Edit Product";
+
+            };
+
+            BtnDelete.Click += delegate {
+
+                var result = MessageBox.Show(
+                    "Are you sure want to delete the selected Product",
+                    "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+
+
+            };
+            BtnSave.Click += delegate {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPageProductDetail);
+                    tabControl1.TabPages.Add(tabPageProductModeList);
+                }
+                MessageBox.Show(Message);
+
+            };
+            BtnCancel.Click += delegate {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageProductDetail);
+                tabControl1.TabPages.Add(tabPageProductModeList);
+
+            };
         }
 
         public string ProductId
@@ -47,16 +101,16 @@ namespace Supermarket_mvp.Views
             set { TxtProductName.Text = value; }
         }
 
-        public int ProductPrice
+        public string ProductPrice
         {
-            get{ return int.TryParse(TxtProductPrice.Text, out int price) ? price : 0;}
-            set{ TxtProductPrice.Text = value.ToString();}
+            get{ return TxtProductPrice.Text; }
+            set{ TxtProductPrice.Text = value; }
         }
 
-        public int ProductStock
+        public string ProductStock
         {
-            get{ return int.TryParse(TxtProductStock.Text, out int stock) ? stock : 0;}
-            set{ TxtProductStock.Text = value.ToString();}
+            get{ return TxtProductStock.Text; }
+            set{ TxtProductStock.Text = value; }
         }
 
         
@@ -92,9 +146,30 @@ namespace Supermarket_mvp.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
-        public void SetPayModeListBildingSource(BindingSource productModeList)
+        public void SetProductListBildingSource(BindingSource productModeList)
         {
             DgProduct.DataSource = productModeList;
+        }
+
+        private static ProductView instance;
+        public static ProductView GetInstance(Form parentCotainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ProductView();
+                instance.MdiParent = parentCotainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

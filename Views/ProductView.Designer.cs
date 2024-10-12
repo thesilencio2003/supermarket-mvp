@@ -33,7 +33,6 @@
             Product = new Label();
             tabControl1 = new TabControl();
             tabPageProductModeList = new TabPage();
-            tabPageProductDetail = new TabPage();
             BtnClose = new Button();
             BtnDelete = new Button();
             BtnEdit = new Button();
@@ -42,6 +41,9 @@
             BtnSearch = new Button();
             TxtSearch = new TextBox();
             label1 = new Label();
+            tabPageProductDetail = new TabPage();
+            TxtProductStock = new TextBox();
+            cc = new Label();
             BtnCancel = new Button();
             BtnSave = new Button();
             TxtProductPrice = new TextBox();
@@ -50,14 +52,12 @@
             label2 = new Label();
             label3 = new Label();
             Label = new Label();
-            c = new TextBox();
-            TxtProductStock = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPageProductModeList.SuspendLayout();
-            tabPageProductDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgProduct).BeginInit();
+            tabPageProductDetail.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -119,26 +119,6 @@
             tabPageProductModeList.TabIndex = 0;
             tabPageProductModeList.Text = "Product Mode List";
             tabPageProductModeList.UseVisualStyleBackColor = true;
-            // 
-            // tabPageProductDetail
-            // 
-            tabPageProductDetail.Controls.Add(c);
-            tabPageProductDetail.Controls.Add(TxtProductStock);
-            tabPageProductDetail.Controls.Add(BtnCancel);
-            tabPageProductDetail.Controls.Add(BtnSave);
-            tabPageProductDetail.Controls.Add(TxtProductPrice);
-            tabPageProductDetail.Controls.Add(TxtProductId);
-            tabPageProductDetail.Controls.Add(TxtProductName);
-            tabPageProductDetail.Controls.Add(label2);
-            tabPageProductDetail.Controls.Add(label3);
-            tabPageProductDetail.Controls.Add(Label);
-            tabPageProductDetail.Location = new Point(4, 24);
-            tabPageProductDetail.Name = "tabPageProductDetail";
-            tabPageProductDetail.Padding = new Padding(3);
-            tabPageProductDetail.Size = new Size(980, 393);
-            tabPageProductDetail.TabIndex = 1;
-            tabPageProductDetail.Text = "Product Detail";
-            tabPageProductDetail.UseVisualStyleBackColor = true;
             // 
             // BtnClose
             // 
@@ -227,7 +207,45 @@
             label1.Size = new Size(125, 21);
             label1.TabIndex = 8;
             label1.Text = "Search Product";
-           
+            // 
+            // tabPageProductDetail
+            // 
+            tabPageProductDetail.Controls.Add(TxtProductStock);
+            tabPageProductDetail.Controls.Add(cc);
+            tabPageProductDetail.Controls.Add(BtnCancel);
+            tabPageProductDetail.Controls.Add(BtnSave);
+            tabPageProductDetail.Controls.Add(TxtProductPrice);
+            tabPageProductDetail.Controls.Add(TxtProductId);
+            tabPageProductDetail.Controls.Add(TxtProductName);
+            tabPageProductDetail.Controls.Add(label2);
+            tabPageProductDetail.Controls.Add(label3);
+            tabPageProductDetail.Controls.Add(Label);
+            tabPageProductDetail.Location = new Point(4, 24);
+            tabPageProductDetail.Name = "tabPageProductDetail";
+            tabPageProductDetail.Padding = new Padding(3);
+            tabPageProductDetail.Size = new Size(980, 393);
+            tabPageProductDetail.TabIndex = 1;
+            tabPageProductDetail.Text = "Product Detail";
+            tabPageProductDetail.UseVisualStyleBackColor = true;
+            // 
+            // TxtProductStock
+            // 
+            TxtProductStock.Location = new Point(21, 250);
+            TxtProductStock.Name = "TxtProductStock";
+            TxtProductStock.PlaceholderText = "Product Stock";
+            TxtProductStock.Size = new Size(317, 23);
+            TxtProductStock.TabIndex = 17;
+            TxtProductStock.TextChanged += textBox1_TextChanged;
+            // 
+            // cc
+            // 
+            cc.AutoSize = true;
+            cc.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cc.Location = new Point(21, 226);
+            cc.Name = "cc";
+            cc.Size = new Size(116, 21);
+            cc.TabIndex = 16;
+            cc.Text = "Product Stock";
             // 
             // BtnCancel
             // 
@@ -305,26 +323,6 @@
             Label.TabIndex = 8;
             Label.Text = "Product Id";
             // 
-            // c
-            // 
-            c.Location = new Point(21, 250);
-            c.Name = "c";
-            c.PlaceholderText = "Product Stock";
-            c.Size = new Size(317, 23);
-            c.TabIndex = 17;
-            c.TextChanged += textBox1_TextChanged;
-            // 
-            // TxtProductStock
-            // 
-            TxtProductStock.AutoSize = true;
-            TxtProductStock.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TxtProductStock.Location = new Point(21, 226);
-            TxtProductStock.Name = "TxtProductStock";
-            TxtProductStock.Size = new Size(116, 21);
-            TxtProductStock.TabIndex = 16;
-            TxtProductStock.Text = "Product Stock";
-            
-            // 
             // ProductView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -340,9 +338,9 @@
             tabControl1.ResumeLayout(false);
             tabPageProductModeList.ResumeLayout(false);
             tabPageProductModeList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DgProduct).EndInit();
             tabPageProductDetail.ResumeLayout(false);
             tabPageProductDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DgProduct).EndInit();
             ResumeLayout(false);
         }
 
@@ -370,7 +368,7 @@
         private Label label2;
         private Label label3;
         private Label Label;
-        private TextBox c;
-        private Label TxtProductStock;
+        private TextBox TxtProductStock;
+        private Label cc;
     }
 }

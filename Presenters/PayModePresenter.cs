@@ -85,8 +85,8 @@ namespace Supermarket_mvp.Presenters
         private void CleanViewFields()
         {
             view.PayModeId = "0";
-            view.PayModeName = "0";
-            view.PayModeObservation = "0";
+            view.PayModeName = "";
+            view.PayModeObservation = "";
         }
          
         private void DeleteSelectedPayMode(object? sender, EventArgs e)

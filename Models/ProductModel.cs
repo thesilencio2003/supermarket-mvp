@@ -10,12 +10,12 @@ namespace Supermarket_mvp.Models
 {
     internal class ProductModel
     {
-        [DisplayName("Pay Mode Id")]
+        [DisplayName("Product Id")]
         public int Id { get; set; }
 
-        [DisplayName("Pay Mode Name")]
-        [Required(ErrorMessage = "Pay mode name is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Pay mode name must be between 3 and 50 characters")]
+        [DisplayName("Product Name")]
+        [Required(ErrorMessage = "Product name is required")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Product name must be between 3 and 50 characters")]
         public string Name { get; set; }
         [DisplayName("Product price")]
         [Required(ErrorMessage = "Product Price is required")]
