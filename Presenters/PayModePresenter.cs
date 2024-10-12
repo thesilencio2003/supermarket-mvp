@@ -85,7 +85,7 @@ namespace Supermarket_mvp.Presenters
             view.PayModeName = "0";
             view.PayModeObservation = "0";
         }
-
+         
         private void DeleteSelectedPayMode(object? sender, EventArgs e)
         {
             try
