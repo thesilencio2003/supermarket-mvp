@@ -15,6 +15,7 @@ namespace Supermarket_mvp.Presenters
         private BindingSource payModeBindingSource;
         private IEnumerable<PayModeModel>payModeList;
 
+       
         public PayModePresenter(IPayModeView view, IPayModeRepository repository)
         {
             this.payModeBindingSource = new BindingSource();
@@ -55,6 +56,7 @@ namespace Supermarket_mvp.Presenters
 
             try
             {
+                
                
                 new Common.ModelDataValidation().Validate(payMode);
                 if (view.IsEdit)
