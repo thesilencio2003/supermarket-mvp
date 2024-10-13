@@ -34,3 +34,12 @@ Customers_Email nvarchar (100) not null
 )
 go
 insert Customers values(1004563221,'Juan','Pablo','Calle olvido','1990-02-28',1234567890,'juanpablo@example.com')
+
+create table Invoice 
+(
+Invoice_Id int identity (10000,1) primary key,
+Invoice_Number int not null unique,
+Invoice_Date Date
+)
+go 
+insert Invoice values(112,'1990-02-22')
