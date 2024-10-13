@@ -19,9 +19,9 @@ namespace Supermarket_mvp.Models
         public string Name { get; set; }
         [DisplayName("Product price")]
         [Required(ErrorMessage = "Product Price is required")]
-        public int Price { get; set; }
+        public string Price { get; set; }
         [DisplayName("Product Stock")]
         [Required(ErrorMessage = "Product Stock is required")]
-        public int Stock { get; set; }
+        public string Stock { get; set; }
     }
 }

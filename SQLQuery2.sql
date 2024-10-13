@@ -24,13 +24,13 @@ drop table Customers
 create table Customers
 (
 Customers_Id int identity (10000,1) primary key,
-Customers_Document char(15) not null unique,
+Customers_Document int not null unique,
 Customers_FirstName nvarchar (50) not null,
 Customers_LastName nvarchar (50) not null,
 Customers_Address nvarchar (50) not null,
 Customers_Birthday date,
-Customers_Phone char(16),
+Customers_Phone int,
 Customers_Email nvarchar (100) not null
 )
 go
-insert Customers values(1004563221,'Juan','Pablo','Calle olvido','1990-02-28','1234567890','juanpablo@example.com')
+insert Customers values(1004563221,'Juan','Pablo','Calle olvido','1990-02-28',1234567890,'juanpablo@example.com')

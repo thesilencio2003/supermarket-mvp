@@ -52,8 +52,8 @@ namespace Supermarket_mvp.Presenters
             var product = new ProductModel();
             product.Id = Convert.ToInt32(view.ProductId);
             product.Name = view.ProductNombre;
-            product.Stock = Convert.ToInt32(view.ProductStock);
-            product.Price = Convert.ToInt32(view.ProductPrice);
+            product.Stock = view.ProductStock;
+            product.Price = view.ProductPrice;
             
 
             try

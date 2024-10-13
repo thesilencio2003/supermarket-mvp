@@ -80,15 +80,15 @@ namespace Supermarket_mvp._Repositories
                         var productModel = new ProductModel();
                         productModel.Id = (int)reader["Product_Id"];
                         productModel.Name = reader["Product_Name"].ToString();
-                        productModel.Price = (int)reader["Product_Price"];
-                        productModel.Stock = (int)reader["Product_Stock"];
+                        productModel.Price = reader["Product_Price"].ToString();
+                        productModel.Stock = reader["Product_Stock"].ToString();
                         productModeList.Add(productModel);
                     }
                 }
             }
             return productModeList;
         }
-
+       
         public IEnumerable<ProductModel> GetByValue(string value)
         {
             var productModeList = new List<ProductModel>();
@@ -111,8 +111,8 @@ namespace Supermarket_mvp._Repositories
                         var productModel = new ProductModel();
                         productModel.Id = (int)reader["Product_Id"];
                         productModel.Name = reader["Product_Name"].ToString();
-                        productModel.Price = (int)reader["Product_Price"];
-                        productModel.Stock = (int)reader["Product_Stock"];
+                        productModel.Price = reader["Product_Price"].ToString();
+                        productModel.Stock = reader["Product_Stock"].ToString();
                         productModeList.Add(productModel);
 
                     }

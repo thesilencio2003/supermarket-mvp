@@ -128,6 +128,83 @@ namespace Supermarket_mvp.Views
                 }
             };
 
+            BtnNew.Click += delegate {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomersList);
+                tabControl1.TabPages.Add(tabPageCustomersDetail);
+                tabPageCustomersDetail.Text = "Add New Customer";
+            };
+
+
+
+            BtnEdit.Click += delegate {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomersList);
+                tabControl1.TabPages.Add(tabPageCustomersDetail);
+                tabPageCustomersDetail.Text = "Edit Customer";
+
+            };
+
+            BtnDelete.Click += delegate {
+
+                var result = MessageBox.Show(
+                    "Are you sure want to delete the selected Customer",
+                    "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+
+
+            };
+            BtnSave.Click += delegate {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPageCustomersDetail);
+                    tabControl1.TabPages.Add(tabPageCustomersList);
+                }
+                MessageBox.Show(Message);
+
+            };
+            BtnCancel.Click += delegate {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomersDetail);
+                tabControl1.TabPages.Add(tabPageCustomersList);
+
+            };
+
         }
+
+
+        private static CustomersView instance;
+        public static CustomersView GetInstance(Form parentCotainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CustomersView();
+                instance.MdiParent = parentCotainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
+        }
+
     }
 }
