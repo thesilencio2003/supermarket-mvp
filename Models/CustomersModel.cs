@@ -17,11 +17,6 @@ namespace Supermarket_mvp.Models
         [Required(ErrorMessage = "Customers Document is required")]
         [StringLength(16, ErrorMessage = "Customers Document must be 16 characters or less")]
         public string Document { get; set; }
-
-        [DisplayName("Customers Name")]
-        [Required(ErrorMessage = "Customers Name is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Customers name must be between 3 and 50 characters")]
-        public string Name { get; set; }
         [DisplayName("Customers firstName")]
         [Required(ErrorMessage = "Customers firstName is required")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Customers FirstName must be between 3 and 50 characters")]
@@ -41,7 +36,7 @@ namespace Supermarket_mvp.Models
         public string Date { get; set; }
         [DisplayName("Customers Phone")]
         [Required(ErrorMessage = "Customers Date is required ")]
-        public string PhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
         [DisplayName("Customers Email")]
         [Required(ErrorMessage = "Customers Email is required ")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Customers Phone must be between 3 and 50 characters")]
